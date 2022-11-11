@@ -1,0 +1,7 @@
+build/
+.idea/
+.vscode/
+bin/
+obj/
+brute.cbp
+brute.depend
