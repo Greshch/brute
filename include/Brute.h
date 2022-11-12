@@ -21,6 +21,8 @@ class Brute
     void Increment();
     size_t GetSize() const;
     void SetFirstAndLast();
+    void SetProgresion();
+    void UpdateProgresion();
 
     private:
     std::string m_password;
@@ -28,6 +30,12 @@ class Brute
     size_t m_index = 0;
     char m_first;
     char m_last;
+    struct Progresion {
+        size_t m_n = 0;
+        size_t m_cur = 1;
+        size_t m_sz = 1;
+        size_t m_Sum = 0;
+    } m_progesion;
 };
 
 #endif // BRUTE_H

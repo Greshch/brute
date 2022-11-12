@@ -8,12 +8,12 @@ using namespace std;
 int main()
 {
     Brute force;
-    force.SetList('0', '9');
+    force.SetList('0', '1');
     //force.SetList('a', 'z');
     //force.SetList('A', 'Z');
     //force.SetList("!@#$%^&*()-_+={}[]?");
     const size_t len = force.GetLength();
-    for (unsigned long long i = 0; i < len + len * len  + len * len * len + len * len * len * len; ++i)
+    for (unsigned long long i = 0; i < 10; ++i)
     {
         std::cout << i + 1 << "\t" << force.GetPassword() << std::endl;
     }
