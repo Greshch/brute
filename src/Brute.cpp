@@ -5,14 +5,11 @@
 
 void Brute::Increment()
 {
-    /*
-    char first = m_list[0];
-    char elapse = m_list[m_list.size() - 1];
-    */
     size_t len = GetSize();
 
     for (size_t i = 0; i < len; )
     {
+        char cur = m_password[i];
         if (i == len - 1)
         {
             if (m_password.size() < len)
@@ -21,10 +18,8 @@ void Brute::Increment()
             }
             else
             {
-                char cur = m_password[i];
                 auto it = std::find(m_list.begin(), m_list.end(), cur);
-                cur = m_list[it - m_list.begin() + 1];
-                m_password[i] = cur;
+                m_password[i] = m_list[it - m_list.begin() + 1];
             }
             break;
         }
@@ -37,10 +32,8 @@ void Brute::Increment()
             }
             else
             {
-                char cur = m_password[i];
                 auto it = std::find(m_list.begin(), m_list.end(), cur);
-                cur = m_list[it - m_list.begin() + 1];
-                m_password[i] = cur;
+                m_password[i] = m_list[it - m_list.begin() + 1];
                 break;
             }
         }
