@@ -20,11 +20,14 @@ class Brute
     static const size_t s_length = 32;
     void Increment();
     size_t GetSize() const;
+    void SetFirstAndLast();
 
     private:
     std::string m_password;
     std::string m_list;
     size_t m_index = 0;
+    char m_first;
+    char m_last;
 };
 
 #endif // BRUTE_H

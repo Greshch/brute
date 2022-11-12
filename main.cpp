@@ -13,7 +13,7 @@ int main()
     //force.SetList('A', 'Z');
     //force.SetList("!@#$%^&*()-_+={}[]?");
     const size_t len = force.GetLength();
-    for (unsigned long long i = 0; i < len + len * len  + len * len * len; ++i)
+    for (unsigned long long i = 0; i < len + len * len  + len * len * len + len * len * len * len; ++i)
     {
         std::cout << i + 1 << "\t" << force.GetPassword() << std::endl;
     }

@@ -5,8 +5,10 @@
 
 void Brute::Increment()
 {
+    /*
     char first = m_list[0];
     char elapse = m_list[m_list.size() - 1];
+    */
     size_t len = GetSize();
 
     for (size_t i = 0; i < len; )
@@ -15,7 +17,7 @@ void Brute::Increment()
         {
             if (m_password.size() < len)
             {
-                m_password.push_back(m_list[0]);
+                m_password.push_back(m_first);
             }
             else
             {
@@ -28,9 +30,9 @@ void Brute::Increment()
         }
         else
         {
-            if (m_password[i] == elapse)
+            if (m_password[i] == m_last)
             {
-                m_password[i] = first;
+                m_password[i] = m_first;
                 ++i;
             }
             else
@@ -64,12 +66,19 @@ size_t Brute::GetSize() const
     return sz;
 }
 
+void Brute::SetFirstAndLast()
+{
+    m_first = m_list[0];
+    m_last = m_list[m_list.size() - 1];
+}
+
 void Brute::SetList(char from, char to)
 {
     for (char ch = from; ch <= to; ++ch)
     {
         this->m_list.push_back(ch);
     }
+    SetFirstAndLast();
 }
 
 void Brute::SetList(std::string const& list)
@@ -78,6 +87,7 @@ void Brute::SetList(std::string const& list)
     {
         this->m_list.push_back(ch);
     }
+    SetFirstAndLast();
 }
 
 std::string& Brute::GetPassword()
