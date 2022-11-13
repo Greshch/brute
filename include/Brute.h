@@ -27,7 +27,6 @@ class Brute
     std::string m_password;
     std::string m_list;
     size_t m_index = 0;
-    size_t m_id = 0;
     char m_first;
     char m_last;
     struct Progresion {
