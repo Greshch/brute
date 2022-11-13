@@ -1,9 +1,9 @@
-#include "Brute.h"
+#include "PasswordGenerator.h"
 #include <iostream>
 #include <cmath>
 #include <algorithm>
 
-void Brute::Update()
+void PasswordGenerator::Update()
 {
     UpdateProgresion();
     size_t len = m_progresion.m_sz;
@@ -41,12 +41,12 @@ void Brute::Update()
     }
 }
 
-size_t Brute::GetListSize() const
+size_t PasswordGenerator::GetListSize() const
 {
     return m_list.size();
 }
 
-void Brute::UpdateProgresion()
+void PasswordGenerator::UpdateProgresion()
 {
     if (m_index < m_progresion.m_Sum)
     {
@@ -57,13 +57,13 @@ void Brute::UpdateProgresion()
     ++m_progresion.m_sz;
 }
 
-void Brute::SetFirstAndLast()
+void PasswordGenerator::SetFirstAndLast()
 {
     m_first = m_list[0];
     m_last = m_list[m_list.size() - 1];
 }
 
-void Brute::SetProgresion()
+void PasswordGenerator::SetProgresion()
 {
     m_progresion.m_n = m_list.size();
     m_progresion.m_cur = 1;
@@ -71,7 +71,7 @@ void Brute::SetProgresion()
     m_progresion.m_Sum = 0;
 }
 
-void Brute::SetList(char from, char to)
+void PasswordGenerator::SetList(char from, char to)
 {
     for (char ch = from; ch <= to; ++ch)
     {
@@ -81,7 +81,7 @@ void Brute::SetList(char from, char to)
     SetProgresion();
 }
 
-void Brute::SetList(std::string const& list)
+void PasswordGenerator::SetList(std::string const& list)
 {
     for (auto const& ch : list)
     {
@@ -91,7 +91,7 @@ void Brute::SetList(std::string const& list)
     SetProgresion();
 }
 
-void Brute::SetMaxLenOfPassword(size_t len)
+void PasswordGenerator::SetMaxLenOfPassword(size_t len)
 {
     size_t cur = 1;
     size_t n = GetListSize();
@@ -102,30 +102,30 @@ void Brute::SetMaxLenOfPassword(size_t len)
     }
 }
 
-std::string& Brute::GetPassword()
+std::string& PasswordGenerator::GetPassword()
 {
     Update();
     ++this->m_index;
     return this->m_password;
 }
 
-size_t Brute::GetAmount() const
+size_t PasswordGenerator::GetAmount() const
 {
     return m_amount;
 }
 
-Brute::Brute() : Brute(Brute::s_length)
+PasswordGenerator::PasswordGenerator() : PasswordGenerator(PasswordGenerator::s_length)
 {
     //ctor
 }
 
-Brute::Brute(size_t buffer)
+PasswordGenerator::PasswordGenerator(size_t buffer)
 {
     this->m_password.reserve(buffer);
     this->m_list.reserve(buffer * 5);
 }
 
-bool Brute::GetPasswordBatch(std::vector<std::string>& passwords, size_t passwordsCount)
+bool PasswordGenerator::GetPasswordBatch(std::vector<std::string>& passwords, size_t passwordsCount)
 {
     int const len = GetAmount();
     if (m_index  >= len)
@@ -144,7 +144,7 @@ bool Brute::GetPasswordBatch(std::vector<std::string>& passwords, size_t passwor
     return true;
 }
 
-Brute::~Brute()
+PasswordGenerator::~PasswordGenerator()
 {
     //dtor
 }

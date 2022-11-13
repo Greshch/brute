@@ -1,15 +1,15 @@
-#ifndef BRUTE_H
-#define BRUTE_H
+#ifndef PasswordGenerator_H
+#define PasswordGenerator_H
 
 #include <string>
 #include <vector>
 
 
-class Brute
+class PasswordGenerator
 {
     public:
-    Brute();
-    Brute(size_t buffer);
+    PasswordGenerator();
+    PasswordGenerator(size_t buffer);
     bool GetPasswordBatch(std::vector<std::string>& passwords, size_t passwordsCount);
     std::string& GetPassword();
     size_t GetAmount() const;
@@ -17,7 +17,7 @@ class Brute
     void SetList(std::string const& list);
     void SetMaxLenOfPassword(size_t len);
     size_t GetListSize() const;
-    virtual ~Brute();
+    virtual ~PasswordGenerator();
 
     protected:
     static const size_t s_length = 32;
@@ -41,4 +41,4 @@ class Brute
     } m_progresion;
 };
 
-#endif // BRUTE_H
+#endif // PasswordGenerator_H
