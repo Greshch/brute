@@ -1,7 +1,11 @@
 build/
 .idea/
 .vscode/
+.vs/
+Debug/
+x64/
 bin/
 obj/
 brute.cbp
 brute.depend
+
