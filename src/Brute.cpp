@@ -45,20 +45,7 @@ void Brute::Increment()
 
 size_t Brute::GetSize() const
 {
-    size_t n = m_list.size();
-    size_t cur = 1;
-    size_t sz = 1;
-    size_t Sum = 0;
-    for (; ;++sz)
-    {
-        cur *= n;
-        Sum += cur;
-        if (m_index < Sum)
-        {
-            return sz;
-        }
-    }
-    return sz;
+    return m_progesion.m_sz;
 }
 
 void Brute::UpdateProgresion()
