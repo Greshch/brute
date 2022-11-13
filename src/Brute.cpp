@@ -7,7 +7,7 @@ void Brute::Increment()
 {
     //size_t len = GetSize();
     UpdateProgresion();
-    size_t len = m_progesion.m_sz;
+    size_t len = m_progresion.m_sz;
 
     for (size_t i = 0; i < len; )
     {
@@ -45,18 +45,18 @@ void Brute::Increment()
 
 size_t Brute::GetSize() const
 {
-    return m_progesion.m_sz;
+    return m_list.size();
 }
 
 void Brute::UpdateProgresion()
 {
-    if (m_index < m_progesion.m_Sum)
+    if (m_index < m_progresion.m_Sum)
     {
         return;
     }
-    m_progesion.m_cur *= m_progesion.m_n;
-    m_progesion.m_Sum += m_progesion.m_cur;
-    ++m_progesion.m_sz;
+    m_progresion.m_cur *= m_progresion.m_n;
+    m_progresion.m_Sum += m_progresion.m_cur;
+    ++m_progresion.m_sz;
 }
 
 void Brute::SetFirstAndLast()
@@ -67,10 +67,10 @@ void Brute::SetFirstAndLast()
 
 void Brute::SetProgresion()
 {
-    m_progesion.m_n = m_list.size();
-    m_progesion.m_cur = 1;
-    m_progesion.m_sz = 0;
-    m_progesion.m_Sum = 0;
+    m_progresion.m_n = m_list.size();
+    m_progresion.m_cur = 1;
+    m_progresion.m_sz = 0;
+    m_progresion.m_Sum = 0;
 }
 
 void Brute::SetList(char from, char to)
@@ -98,11 +98,6 @@ std::string& Brute::GetPassword()
     Increment();
     ++this->m_index;
     return this->m_password;
-}
-
-size_t Brute::GetLength() const
-{
-    return m_list.size();
 }
 
 Brute::Brute() : Brute(Brute::s_length)

@@ -12,14 +12,13 @@ class Brute
     std::string& GetPassword();
     void SetList(char from, char to);
     void SetList(std::string const& list);
-    size_t GetLength() const;
+    size_t GetSize() const;
     void Reset();
     virtual ~Brute();
 
     protected:
     static const size_t s_length = 32;
     void Increment();
-    size_t GetSize() const;
     void SetFirstAndLast();
     void SetProgresion();
     void UpdateProgresion();
@@ -36,7 +35,7 @@ class Brute
         size_t m_cur = 1;
         size_t m_sz = 1;
         size_t m_Sum = 0;
-    } m_progesion;
+    } m_progresion;
 };
 
 #endif // BRUTE_H
