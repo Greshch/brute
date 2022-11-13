@@ -3,9 +3,9 @@
 #include <cmath>
 #include <algorithm>
 
-void Brute::Increment()
+void Brute::Update()
 {
-    //size_t len = GetSize();
+    //size_t len = GetListSize();
     UpdateProgresion();
     size_t len = m_progresion.m_sz;
 
@@ -43,7 +43,7 @@ void Brute::Increment()
     }
 }
 
-size_t Brute::GetSize() const
+size_t Brute::GetListSize() const
 {
     return m_list.size();
 }
@@ -93,11 +93,27 @@ void Brute::SetList(std::string const& list)
     SetProgresion();
 }
 
-std::string& Brute::GetPassword()
+void Brute::SetMaxLenOfPassword(size_t len)
 {
-    Increment();
+    size_t cur = 1;
+    size_t n = GetListSize();
+    for (size_t i = 0; i < len; i++)
+    {
+        cur *= n;
+        m_amount += cur;
+    }
+}
+
+std::string& Brute::GetPasswords()
+{
+    Update();
     ++this->m_index;
     return this->m_password;
+}
+
+size_t Brute::GetAmount() const
+{
+    return m_amount;
 }
 
 Brute::Brute() : Brute(Brute::s_length)
@@ -109,13 +125,6 @@ Brute::Brute(size_t buffer)
 {
     this->m_password.reserve(buffer);
     this->m_list.reserve(buffer * 5);
-}
-
-void Brute::Reset()
-{
-    m_password.clear();
-    m_list.clear();
-    m_index = 0;
 }
 
 Brute::~Brute()

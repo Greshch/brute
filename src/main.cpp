@@ -8,16 +8,16 @@ using namespace std;
 int main()
 {
     Brute force;
-    force.SetList('a', 'b');
-    //force.SetList('a', 'z');
+    //force.SetList('0', '9');
+    force.SetList('a', 'z');
     //force.SetList('A', 'Z');
     //force.SetList("!@#$%^&*()-_+={}[]?");
-    const size_t len = force.GetSize();
-    for (unsigned long long i = 0; i < len + len * len; ++i)
+    force.SetMaxLenOfPassword(2);
+    int const len = force.GetAmount();
+    for (unsigned long long i = 0; i < len; ++i)
     {
-        std::cout << i + 1 << "\t" << force.GetPassword() << std::endl;
+        std::cout << i + 1 << "\t" << force.GetPasswords() << std::endl;
     }
-    force.Reset();
 
     return 0;
 }

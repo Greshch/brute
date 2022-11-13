@@ -9,16 +9,17 @@ class Brute
     public:
     Brute();
     Brute(size_t buffer);
-    std::string& GetPassword();
+    std::string& GetPasswords();
+    size_t GetAmount() const;
     void SetList(char from, char to);
     void SetList(std::string const& list);
-    size_t GetSize() const;
-    void Reset();
+    void SetMaxLenOfPassword(size_t len);
+    size_t GetListSize() const;
     virtual ~Brute();
 
     protected:
     static const size_t s_length = 32;
-    void Increment();
+    void Update();
     void SetFirstAndLast();
     void SetProgresion();
     void UpdateProgresion();
@@ -27,6 +28,7 @@ class Brute
     std::string m_password;
     std::string m_list;
     size_t m_index = 0;
+    size_t m_amount = 0;
     char m_first;
     char m_last;
     struct Progresion {
