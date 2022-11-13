@@ -1,7 +1,8 @@
 #ifndef BRUTE_H
 #define BRUTE_H
 
-#include<string>
+#include <string>
+#include <vector>
 
 
 class Brute
@@ -9,7 +10,8 @@ class Brute
     public:
     Brute();
     Brute(size_t buffer);
-    std::string& GetPasswords();
+    bool GetPasswordBatch(std::vector<std::string>& passwords, size_t passwordsCount);
+    std::string& GetPassword();
     size_t GetAmount() const;
     void SetList(char from, char to);
     void SetList(std::string const& list);

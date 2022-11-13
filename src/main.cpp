@@ -8,15 +8,18 @@ using namespace std;
 int main()
 {
     Brute force;
-    //force.SetList('0', '9');
-    force.SetList('a', 'z');
+    force.SetList('0', '1');
+    //force.SetList('a', 'z');
     //force.SetList('A', 'Z');
     //force.SetList("!@#$%^&*()-_+={}[]?");
     force.SetMaxLenOfPassword(2);
     int const len = force.GetAmount();
-    for (unsigned long long i = 0; i < len; ++i)
+    std::vector<std::string> buffer;
+    bool next = true;
+    while (next)
     {
-        std::cout << i + 1 << "\t" << force.GetPasswords() << std::endl;
+        next = force.GetPasswordBatch(buffer, 4);
+        buffer.clear();
     }
 
     return 0;

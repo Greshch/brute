@@ -5,7 +5,6 @@
 
 void Brute::Update()
 {
-    //size_t len = GetListSize();
     UpdateProgresion();
     size_t len = m_progresion.m_sz;
 
@@ -39,7 +38,6 @@ void Brute::Update()
                 break;
             }
         }
-
     }
 }
 
@@ -104,7 +102,7 @@ void Brute::SetMaxLenOfPassword(size_t len)
     }
 }
 
-std::string& Brute::GetPasswords()
+std::string& Brute::GetPassword()
 {
     Update();
     ++this->m_index;
@@ -125,6 +123,25 @@ Brute::Brute(size_t buffer)
 {
     this->m_password.reserve(buffer);
     this->m_list.reserve(buffer * 5);
+}
+
+bool Brute::GetPasswordBatch(std::vector<std::string>& passwords, size_t passwordsCount)
+{
+    int const len = GetAmount();
+    if (m_index  >= len)
+    {
+        return false;
+    }
+    
+    for (size_t i = m_index % passwordsCount; i < passwordsCount; ++i)
+    {
+        if (m_index == len)
+        {
+            return false;
+        }
+        passwords.push_back(GetPassword());
+    }
+    return true;
 }
 
 Brute::~Brute()
